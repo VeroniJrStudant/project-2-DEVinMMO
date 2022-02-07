@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -13,8 +14,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Card = ({ thumbnail, title, description }) => {
+const Card = ({ id, thumbnail, title, description }) => {
   const classes = useStyles();
+  let navigate = useNavigate();
+
+  const handleClick = () => navigate(`detail/${id}`);
 
   return (
     <>
@@ -36,7 +40,7 @@ const Card = ({ thumbnail, title, description }) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={handleClick}>
             Ver mais
           </Button>
         </CardActions>
